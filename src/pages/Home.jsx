@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
-import { FaGithub,FaEnvelope } from 'react-icons/fa';
-import profilePic from '../assets/images/Profile.JPG';
+import { FaGithub, FaEnvelope } from 'react-icons/fa';
+import profilePic from '../assets/images/Profile.jpg';
+import { useTheme } from '../context/ThemeContext';
+
 
 const Home = () => {
+  const mouseLightRef = useRef(null);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (mouseLightRef.current && isDark) {
+        const x = e.clientX;
+        const y = e.clientY;
+        mouseLightRef.current.style.left = `${x}px`;
+        mouseLightRef.current.style.top = `${y}px`;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [isDark]);
   return (
     <div className="min-h-screen bg-primary px-4 pt-20 pb-12">
+      {isDark && (
+        <div
+          ref={mouseLightRef}
+          className="pointer-events-none fixed opacity-20 w-64 h-64 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-teal-400 to-blue-500"
+        />
+      )}
       <div className="max-w-7xl mx-auto">
         {/* Mobile Social Links */}
         <motion.div
