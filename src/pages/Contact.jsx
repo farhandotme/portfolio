@@ -95,20 +95,20 @@ const Contact = () => {
     }
   };
   const mouseLightRef = useRef(null);
-    
-    useEffect(() => {
-      const handleMouseMove = (e) => {
-        if (mouseLightRef.current && isDark) {
-          const x = e.clientX;
-          const y = e.clientY;
-          mouseLightRef.current.style.left = `${x}px`;
-          mouseLightRef.current.style.top = `${y}px`;
-        }
-      };
-      
-      window.addEventListener('mousemove', handleMouseMove);
-      return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, [isDark]);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (mouseLightRef.current && isDark) {
+        const x = e.clientX;
+        const y = e.clientY;
+        mouseLightRef.current.style.left = `${x}px`;
+        mouseLightRef.current.style.top = `${y}px`;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [isDark]);
 
   const buttonVariants = {
     rest: { scale: 1 },
@@ -128,7 +128,7 @@ const Contact = () => {
   return (
     <div className={`min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'} px-4 pt-24 pb-12 relative overflow-hidden`}>
       {isDark && (
-        <div 
+        <div
           ref={mouseLightRef}
           className="pointer-events-none fixed opacity-20 w-64 h-64 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-teal-400 to-blue-500"
         />
@@ -211,7 +211,7 @@ const Contact = () => {
             animate={titleInView ? { width: 96 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
           />
-          
+
         </motion.div>
 
         <div className="grid lg:grid-cols-5 gap-8">
