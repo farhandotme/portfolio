@@ -17,7 +17,7 @@ const About = () => {
   };
 
   const skills = [
-    { category: "Frontend", items: ["React", "JavaScript", "TypeScript", "Tailwind CSS"] },
+    { category: "Frontend", items: ["React", "JavaScript", "TypeScript", "Tailwind CSS", "Ejs"] },
     { category: "Backend", items: ["Node.js", "Express", "MongoDB", "MySQL", "REST APIs"] },
     { category: "Tools & Others", items: ["Git", "VS Code", "Postman", "Linux", "JWT"] }
   ];

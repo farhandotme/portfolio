@@ -27,7 +27,7 @@ const MacDockNavbar = () => {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`rounded-full px-2  flex items-center space-x-1 sm:space-x-2 md:space-x-3
+        className={`rounded-full px-2 flex items-center space-x-1 sm:space-x-2 md:space-x-3
           bg-white/80 dark:bg-slate-800/80 backdrop-blur-md shadow-lg
           border border-gray-200 dark:border-slate-700`}
       >
@@ -49,10 +49,9 @@ const MacDockNavbar = () => {
                 <motion.div
                   className={`flex flex-col items-center justify-center p-1 rounded-full
                     transition-all duration-100 ease-in-out
-                    ${
-                      isActive
-                        ? "text-[#64ffda]"
-                        : "text-gray-600 dark:text-gray-300 hover:text-[#64ffda]"
+                    ${isActive
+                      ? "text-[#64ffda]"
+                      : "text-gray-600 dark:text-gray-300 hover:text-[#64ffda]"
                     }`}
                   whileHover={{ scale: 1.2, y: -10 }}
                 >
