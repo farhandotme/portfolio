@@ -9,21 +9,104 @@
   --color-text-dark: #ccd6f6;
   --color-text-dark-secondary: #8892b0;
   --color-bg-secondary: #112240;
+  --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Theme Variables */
 .dark {
   --color-bg: var(--color-bg-dark);
   --color-text: var(--color-text-dark);
   --color-text-secondary: var(--color-text-dark-secondary);
 }
 
+/* Global Styles */
 html {
   background-color: var(--color-bg-light);
   color: var(--color-text-light);
+  scroll-behavior: smooth;
 }
 
 html.dark {
   background-color: var(--color-bg-dark);
   color: var(--color-text-dark);
+}
+
+body {
+  transition: var(--transition-base);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg-dark);
+}
+
+/* Focus Styles */
+:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Shared Button Styles */
+.btn {
+  @apply px-6 py-3 rounded-md font-medium transition-all duration-300;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.btn:hover::after {
+  transform: translateX(100%);
+}
+
+.btn-primary {
+  @apply bg-[#64ffda] text-gray-900 hover:bg-[#64ffda]/90;
+}
+
+.btn-outline {
+  @apply border-2 border-[#64ffda] text-[#64ffda] hover:bg-[#64ffda]/10;
+}
+
+/* Card Styles */
+.card {
+  @apply rounded-lg shadow-lg transition-all duration-300;
+  background: linear-gradient(to bottom right, 
+    rgba(255, 255, 255, 0.1), 
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(10px);
+}
+
+.dark .card {
+  background: linear-gradient(to bottom right, 
+    rgba(17, 34, 64, 0.8), 
+    rgba(10, 25, 47, 0.6)
+  );
 }
 

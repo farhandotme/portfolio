@@ -22,14 +22,17 @@ const MacDockNavbar = () => {
   const ThemeIcon = theme === "dark" ? FaSun : FaMoon;
 
   return (
-    <div className="fixed bottom-0 left-0 w-full z-50 flex justify-center pb-2">
+    <div className="fixed bottom-0 left-0 w-full z-50 flex justify-center pb-4">
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className={`rounded-full px-2 flex items-center space-x-1 sm:space-x-2 md:space-x-3
-          bg-white/80 dark:bg-slate-800/80 backdrop-blur-md shadow-lg
-          border border-gray-200 dark:border-slate-700`}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`rounded-full px-3 py-1 flex items-center space-x-2 sm:space-x-3 md:space-x-4
+          bg-white/90 dark:bg-slate-800/90 backdrop-blur-lg 
+          border border-gray-200/50 dark:border-slate-700/50
+          shadow-lg shadow-black/5 dark:shadow-white/5
+          hover:border-secondary/20 dark:hover:border-secondary/20
+          transition-all duration-300`}
       >
         {navigation.map((item, index) => {
           const isActive = location.pathname === item.path;
@@ -52,17 +55,17 @@ const MacDockNavbar = () => {
                     ${isActive
                       ? "text-[#64ffda]"
                       : "text-gray-600 dark:text-gray-300 hover:text-[#64ffda]"
-                    }`}
-                  whileHover={{ scale: 1.2, y: -10 }}
-                >
-                  <motion.div
-                    className={`relative z-10 p-2 rounded-full
-                      ${isActive ? "bg-teal-500/20" : "bg-transparent"}`}
-                  >
-                    <item.icon
-                      size={isHovered || isActive ? 28 : 24}
-                      className="transition-all duration-300"
-                    />
+                    }`}            whileHover={{ scale: 1.15, y: -8 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <motion.div
+              className={`relative z-10 p-2 rounded-full transition-all duration-300
+                ${isActive ? "bg-secondary/20 shadow-lg shadow-secondary/20" : "bg-transparent"}`}
+            >
+              <item.icon
+                size={isHovered || isActive ? 28 : 24}
+                className="transition-all duration-300"
+              />
                   </motion.div>
 
                   {/* Label that appears on hover */}
@@ -112,9 +115,13 @@ const MacDockNavbar = () => {
             className={`flex flex-col items-center justify-center p-2 rounded-full
               transition-all duration-300 ease-in-out
               text-gray-600 dark:text-gray-300 hover:text-[#64ffda]`}
-            whileHover={{ scale: 1.2, y: -10 }}
+            whileHover={{ scale: 1.15, y: -8, rotate: 180 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
-            <motion.div className="relative z-10 p-2 rounded-full">
+            <motion.div 
+              className="relative z-10 p-2 rounded-full bg-secondary/10 hover:bg-secondary/20 transition-all duration-300"
+              style={{ boxShadow: hoveredItem === "theme" ? "0 0 20px rgba(100, 255, 218, 0.2)" : "none" }}
+            >
               <ThemeIcon
                 size={hoveredItem === "theme" ? 28 : 24}
                 className="transition-all duration-300"

@@ -146,11 +146,11 @@ const Projects = () => {
             <button
               key={category}
               onClick={() => setFilter(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === category
-                ? `text-gray-900 ${isDark ? 'bg-opacity-90' : 'bg-opacity-80'}`
-                : `${isDark ? 'text-gray-300 bg-gray-800' : 'text-gray-700 bg-gray-200'} hover:opacity-80`
-                }`}
-              style={filter === category ? { backgroundColor: themeColor } : {}}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 
+                ${filter === category 
+                  ? 'bg-[#64ffda] text-gray-900 shadow-lg shadow-[#64ffda]/20' 
+                  : `${isDark ? 'bg-gray-800 text-gray-300' : 'bg-gray-200 text-gray-700'} 
+                     hover:bg-[#64ffda]/10 hover:text-[#64ffda]`}`}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </button>
@@ -168,11 +168,13 @@ const Projects = () => {
             <motion.div
               key={project.id}
               variants={projectVariants}
-              className={`rounded-lg overflow-hidden shadow-lg ${isDark ? 'bg-gray-800' : 'bg-white'} transition-transform duration-300 hover:-translate-y-2`}
+              whileHover={{ y: -12, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className="card overflow-hidden transform-gpu hover:shadow-xl hover:shadow-[#64ffda]/20"
             >
               {/* Project Image */}
-              <div className="h-48 overflow-hidden relative">
-                <div className="absolute inset-0 bg-gray-900 bg-opacity-30" />
+              <div className="h-48 overflow-hidden relative group">
+                <div className="absolute inset-0 bg-gray-900 opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
                 <div className="w-full h-full bg-gray-400 flex items-center justify-center">
                   {/* Placeholder - replace with your actual image */}
                   <FaCode className="text-4xl text-white opacity-30" />
@@ -187,26 +189,30 @@ const Projects = () => {
                   </h3>
                   <div className="flex space-x-3">
                     {project.github && (
-                      <a
+                      <motion.a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-lg hover:scale-110 transition-transform"
+                        className="text-lg p-2 rounded-full transition-all duration-300 hover:bg-secondary/10"
                         style={{ color: themeColor }}
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.95 }}
                       >
                         <FaGithub />
-                      </a>
+                      </motion.a>
                     )}
                     {project.live && (
-                      <a
+                      <motion.a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-lg hover:scale-110 transition-transform"
+                        className="text-lg p-2 rounded-full transition-all duration-300 hover:bg-secondary/10"
                         style={{ color: themeColor }}
+                        whileHover={{ scale: 1.2, rotate: 15 }}
+                        whileTap={{ scale: 0.95 }}
                       >
                         <FaExternalLinkAlt />
-                      </a>
+                      </motion.a>
                     )}
                   </div>
                 </div>
@@ -217,10 +223,11 @@ const Projects = () => {
                   {project.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className={`px-2 py-1 text-xs rounded-full ${isDark
-                        ? 'bg-gray-700 text-gray-300'
-                        : 'bg-gray-100 text-gray-800'
-                        }`}
+                      className={`px-2 py-1 text-xs rounded-full transition-all duration-300
+                        ${isDark
+                          ? 'bg-gray-700/50 text-gray-300 hover:bg-[#64ffda]/20 hover:text-[#64ffda]'
+                          : 'bg-gray-100/50 text-gray-800 hover:bg-[#64ffda]/10 hover:text-[#64ffda]'
+                        } hover:shadow-sm hover:shadow-[#64ffda]/10`}
                     >
                       {tech}
                     </span>
@@ -247,23 +254,36 @@ const Projects = () => {
 
         {/* Contact CTA */}
         <motion.div
-          className={`mt-20 p-8 rounded-lg text-center ${isDark ? 'bg-gray-800' : 'bg-white'} shadow-lg`}
+          className="card mt-20 p-8 text-center transform-gpu hover:shadow-xl hover:shadow-[#64ffda]/20"
           {...fadeInUp}
           transition={{ duration: 0.6, delay: 0.4 }}
+          whileHover={{ scale: 1.02 }}
         >
-          <h3 className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-800'}`}>
+          <motion.h3 
+            className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-800'}`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
             Interested in working together?
-          </h3>
-          <p className={`mb-6 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+          </motion.h3>
+          <motion.p 
+            className={`mb-6 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
             I'm always open to discussing product design work or partnership opportunities.
-          </p>
-          <a
+          </motion.p>
+          <motion.a
             href="/contact"
-            className="inline-block px-6 py-3 rounded-full font-medium text-gray-900 transition-all duration-300 hover:shadow-lg"
-            style={{ backgroundColor: themeColor }}
+            className="btn btn-primary inline-block"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Get In Touch
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </div>

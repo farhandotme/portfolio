@@ -123,7 +123,7 @@ const Contact = () => {
     tap: { scale: 0.95 }
   };
 
-  const titleLetters = "Get In Touch".split("");
+  const titleLetters = "Contact Me".split("");
 
   return (
     <div className={`min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'} px-4 pt-24 pb-12 relative overflow-hidden`}>
@@ -231,33 +231,38 @@ const Contact = () => {
               {/* Contact Cards */}
               <div className="space-y-6">
                 {[
-                  { icon: FaMapMarkerAlt, title: "Location", content: "New York, NY" },
-                  { icon: FaEnvelope, title: "Email", content: "hello@example.com" },
-                  { icon: FaPhone, title: "Phone", content: "+1 (123) 456-7890" }
+                  { icon: FaMapMarkerAlt, title: "Location", content: "Guwahati, Assam, India" },
+                  { icon: FaEnvelope, title: "Email", content: "princeofficial355@gmail.com" },
+                  { icon: FaPhone, title: "Phone", content: "+91 9707998677" }
                 ].map((item, index) => (
                   <motion.div
                     key={index}
-                    className={`p-4 rounded-lg ${isDark ? 'bg-gray-700' : 'bg-gray-50'} flex items-start space-x-4`}
+                    className={`p-4 rounded-lg ${isDark ? 'bg-gray-700/50' : 'bg-gray-50/50'} 
+                      flex items-start space-x-4 backdrop-blur-sm transition-all duration-300
+                      hover:shadow-lg hover:shadow-[#64ffda]/10 group`}
                     variants={cardHover}
                     initial="rest"
                     whileHover="hover"
                     animate="rest"
                     custom={index}
                   >
-                    <div
-                      className="p-3 rounded-full"
+                    <motion.div
+                      className="p-3 rounded-full transition-colors duration-300"
                       style={{ backgroundColor: `${themeColor}20` }}
+                      whileHover={{ scale: 1.1 }}
                     >
                       <item.icon
-                        className="text-xl"
+                        className="text-xl transition-transform duration-300 group-hover:scale-110"
                         style={{ color: themeColor }}
                       />
-                    </div>
+                    </motion.div>
                     <div>
-                      <h3 className={`font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                      <h3 className={`font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'} 
+                        group-hover:text-[#64ffda] transition-colors duration-300`}>
                         {item.title}
                       </h3>
-                      <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                      <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} transition-colors duration-300
+                        group-hover:text-[#64ffda]/80`}>
                         {item.content}
                       </p>
                     </div>
@@ -272,8 +277,8 @@ const Contact = () => {
                 </h3>
                 <div className="flex space-x-4">
                   {[
-                    { icon: FaLinkedinIn, url: "https://linkedin.com" },
-                    { icon: FaGithub, url: "https://github.com" },
+                    { icon: FaLinkedinIn, url: "https://www.linkedin.com/in/farhan-hussain-2762a3317/" },
+                    { icon: FaGithub, url: "https://github.com/farhandotme" },
                     { icon: FaTwitter, url: "https://twitter.com" }
                   ].map((social, index) => (
                     <motion.a
@@ -281,13 +286,16 @@ const Contact = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-3 rounded-full ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}
+                      className={`p-3 rounded-full ${isDark ? 'bg-gray-700/50' : 'bg-gray-200/50'} 
+                        transition-shadow duration-300 hover:shadow-lg hover:shadow-[#64ffda]/20`}
                       whileHover={{
-                        scale: 1.1,
-                        backgroundColor: themeColor,
-                        color: isDark ? '#1a202c' : '#ffffff'
+                        scale: 1.15,
+                        backgroundColor: '#64ffda',
+                        color: isDark ? '#1a202c' : '#ffffff',
+                        y: -5
                       }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
                       <social.icon className="text-lg" />
                     </motion.a>
@@ -421,10 +429,12 @@ const Contact = () => {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          className={`w-full px-4 py-3 rounded-lg outline-none focus:ring-2 transition-all duration-300 ${isDark
-                            ? 'bg-gray-700 text-white focus:ring-teal-500/50'
-                            : 'bg-gray-100 text-gray-900 focus:ring-teal-500/30'
-                            }`}
+                          className={`w-full px-4 py-3 rounded-lg outline-none transition-all duration-300 
+                            ${isDark 
+                              ? 'bg-gray-700/50 text-white focus:bg-gray-700/80' 
+                              : 'bg-gray-100/50 text-gray-900 focus:bg-gray-100/80'} 
+                            border-2 border-transparent hover:border-[#64ffda]/30
+                            focus:border-[#64ffda]/50 focus:shadow-lg focus:shadow-[#64ffda]/10`}
                           placeholder="John Doe"
                           required
                         />
@@ -448,10 +458,12 @@ const Contact = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          className={`w-full px-4 py-3 rounded-lg outline-none focus:ring-2 transition-all duration-300 ${isDark
-                            ? 'bg-gray-700 text-white focus:ring-teal-500/50'
-                            : 'bg-gray-100 text-gray-900 focus:ring-teal-500/30'
-                            }`}
+                          className={`w-full px-4 py-3 rounded-lg outline-none transition-all duration-300 
+                            ${isDark 
+                              ? 'bg-gray-700/50 text-white focus:bg-gray-700/80' 
+                              : 'bg-gray-100/50 text-gray-900 focus:bg-gray-100/80'} 
+                            border-2 border-transparent hover:border-[#64ffda]/30
+                            focus:border-[#64ffda]/50 focus:shadow-lg focus:shadow-[#64ffda]/10`}
                           placeholder="john@example.com"
                           required
                         />
@@ -476,10 +488,12 @@ const Contact = () => {
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-lg outline-none focus:ring-2 transition-all duration-300 ${isDark
-                          ? 'bg-gray-700 text-white focus:ring-teal-500/50'
-                          : 'bg-gray-100 text-gray-900 focus:ring-teal-500/30'
-                          }`}
+                        className={`w-full px-4 py-3 rounded-lg outline-none transition-all duration-300 
+                          ${isDark 
+                            ? 'bg-gray-700/50 text-white focus:bg-gray-700/80' 
+                            : 'bg-gray-100/50 text-gray-900 focus:bg-gray-100/80'} 
+                          border-2 border-transparent hover:border-[#64ffda]/30
+                          focus:border-[#64ffda]/50 focus:shadow-lg focus:shadow-[#64ffda]/10`}
                         placeholder="How can I help you?"
                         required
                       />
@@ -503,10 +517,12 @@ const Contact = () => {
                         rows="5"
                         value={formData.message}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-lg outline-none focus:ring-2 transition-all duration-300 ${isDark
-                          ? 'bg-gray-700 text-white focus:ring-teal-500/50'
-                          : 'bg-gray-100 text-gray-900 focus:ring-teal-500/30'
-                          }`}
+                        className={`w-full px-4 py-3 rounded-lg outline-none transition-all duration-300 
+                          ${isDark 
+                            ? 'bg-gray-700/50 text-white focus:bg-gray-700/80' 
+                            : 'bg-gray-100/50 text-gray-900 focus:bg-gray-100/80'} 
+                          border-2 border-transparent hover:border-[#64ffda]/30
+                          focus:border-[#64ffda]/50 focus:shadow-lg focus:shadow-[#64ffda]/10 resize-none`}
                         placeholder="Your message here..."
                         required
                       />
@@ -525,8 +541,7 @@ const Contact = () => {
                         initial="rest"
                         whileHover="hover"
                         whileTap="tap"
-                        className="px-8 py-3 rounded-full font-medium text-gray-900 relative overflow-hidden group"
-                        style={{ backgroundColor: themeColor }}
+                        className="btn btn-primary rounded-full group disabled:opacity-70 disabled:cursor-not-allowed"
                         disabled={isSubmitting}
                       >
                         <span className="relative z-10 flex items-center justify-center gap-2">

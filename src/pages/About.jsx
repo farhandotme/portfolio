@@ -17,7 +17,7 @@ const About = () => {
   };
 
   const skills = [
-    { category: "Frontend", items: ["React", "JavaScript", "TypeScript", "Tailwind CSS", "Ejs"] },
+    { category: "Frontend", items: ["React", "JavaScript", "Tailwind CSS", "Ejs"] },
     { category: "Backend", items: ["Node.js", "Express", "MongoDB", "MySQL", "REST APIs"] },
     { category: "Tools & Others", items: ["Git", "VS Code", "Postman", "Linux", "JWT"] }
   ];
@@ -134,11 +134,11 @@ const About = () => {
                     {skillGroup.items.map((skill, idx) => (
                       <span
                         key={idx}
-                        className={`px-3 py-1 text-sm ${isDark
-                          ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                          : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-                          } rounded-full transition-colors duration-300`}
-                        style={{ ':hover': { color: themeColor } }}
+                        className={`px-3 py-1 text-sm rounded-full transition-all duration-300
+                          ${isDark
+                            ? 'bg-gray-700/50 text-gray-300 hover:bg-secondary/20 hover:text-secondary'
+                            : 'bg-gray-100/50 text-gray-800 hover:bg-secondary/10 hover:text-secondary'
+                          } hover:shadow-md hover:shadow-secondary/10 border border-transparent hover:border-secondary/30`}
                       >
                         {skill}
                       </span>

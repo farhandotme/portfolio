@@ -5,12 +5,11 @@ import { FaGithub, FaEnvelope } from 'react-icons/fa';
 import profilePic from '../assets/images/Profile.jpg';
 import { useTheme } from '../context/ThemeContext';
 
-
 const Home = () => {
   const mouseLightRef = useRef(null);
   const { theme } = useTheme();
   const isDark = theme === 'dark';
-
+  
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (mouseLightRef.current && isDark) {
@@ -20,6 +19,7 @@ const Home = () => {
         mouseLightRef.current.style.top = `${y}px`;
       }
     };
+
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
@@ -44,19 +44,19 @@ const Home = () => {
             href="https://github.com/farhandotme"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-text-secondary hover:text-secondary transition-all duration-300"
+            className="text-text-secondary hover:text-[#64ffda] transition-all duration-300"
           >
             <FaGithub size={24} />
           </a>
           <a
             href="mailto:princeofficial355@gmail.com"
-            className="text-text-secondary hover:text-secondary transition-all duration-300"
+            className="text-text-secondary hover:text-[#64ffda] transition-all duration-300"
           >
             <FaEnvelope size={24} />
           </a>
           <a
             href="tel:+919707998677"
-            className="text-text-secondary hover:text-secondary transition-all duration-300 font-mono"
+            className="text-text-secondary hover:text-[#64ffda] transition-all duration-300 font-mono"
           >
             +91
           </a>
@@ -74,10 +74,12 @@ const Home = () => {
               <img
                 src={profilePic}
                 alt="Farhan Hussain"
-                className="w-full rounded-md grayscale hover:grayscale-0 transition-all duration-500"
+                className="w-full rounded-md grayscale hover:grayscale-0 transition-all duration-500
+                  hover:shadow-xl hover:shadow-[#64ffda]/20"
               />
-              <div className="absolute -inset-4 border-2 border-secondary rounded-md -z-10 
-                transform hover:translate-x-2 hover:translate-y-2 transition-transform duration-300"></div>
+              <div className="absolute -inset-4 border-2 border-[#64ffda]/50 rounded-md -z-10 
+                transform hover:translate-x-2 hover:translate-y-2 transition-all duration-300
+                hover:border-[#64ffda]/80 hover:shadow-lg hover:shadow-[#64ffda]/10"></div>
             </div>
           </motion.div>
 
@@ -88,7 +90,7 @@ const Home = () => {
             transition={{ duration: 0.5 }}
             className="text-center md:text-left"
           >
-            <p className="text-secondary font-mono mb-3 sm:mb-5">Hi, I'm</p>
+            <p className="text-[#64ffda] font-mono mb-3 sm:mb-5">Hi, I'm</p>
             <h1 className="text-3xl sm:text-7xl font-bold text-text-primary mb-2 sm:mb-4">
               Farhan Hussain.
             </h1>
@@ -109,15 +111,13 @@ const Home = () => {
             >
               <a
                 href="/projects"
-                className="px-8 py-3 sm:py-4 border-2 border-secondary text-secondary rounded-md
-                hover:bg-secondary/10 transition-all duration-300 font-mono text-sm sm:text-base"
+                className="btn btn-outline font-mono text-sm sm:text-base"
               >
                 View My Projects
               </a>
               <a
                 href="/contact"
-                className="px-8 py-3 sm:py-4 bg-secondary text-primary rounded-md
-                hover:bg-secondary/90 transition-all duration-300 font-mono text-sm sm:text-base"
+                className="btn btn-primary font-mono text-sm sm:text-base"
               >
                 Get In Touch
               </a>
@@ -129,13 +129,13 @@ const Home = () => {
               transition={{ delay: 0.9 }}
               className="mt-12 sm:mt-16 text-text-secondary"
             >
-              <h3 className="text-lg sm:text-xl font-mono text-secondary mb-4">Technical Skills</h3>
+              <h3 className="text-lg sm:text-xl font-mono text-[#64ffda] mb-4">Technical Skills</h3>
               <div className="flex flex-wrap gap-2 sm:gap-3 justify-center md:justify-start">
                 {['JavaScript', 'TypeScript', 'React', 'Node.js', 'Express.js', 'MongoDB', 'MySQL', 'Python', 'C++', 'Java', 'Ejs']
                   .map((skill, index) => (
                     <span key={index}
                       className="px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-light rounded-full text-xs sm:text-sm
-                      hover:bg-secondary/10 transition-colors duration-300">
+                      hover:bg-[#64ffda]/10 hover:text-[#64ffda] transition-colors duration-300">
                       {skill}
                     </span>
                   ))}
