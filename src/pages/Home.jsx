@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaEnvelope } from 'react-icons/fa';
 import profilePic from '../assets/images/Profile.jpg';
 import { useTheme } from '../context/ThemeContext';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const mouseLightRef = useRef(null);
@@ -108,18 +109,18 @@ const Home = () => {
               transition={{ delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
             >
-              <a
-                href="/projects"
+              <Link
+                to="/projects"
                 className="btn btn-outline font-mono text-sm sm:text-base"
               >
                 View My Projects
-              </a>
-              <a
-                href="/contact"
+              </Link>
+              <Link
+                to="/contact"
                 className="btn btn-primary font-mono text-sm sm:text-base"
               >
                 Get In Touch
-              </a>
+              </Link>
             </motion.div>
 
             <motion.div
