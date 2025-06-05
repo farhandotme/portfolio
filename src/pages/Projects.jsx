@@ -11,52 +11,45 @@ const Projects = () => {
 
   // State for filtering projects
   const [filter, setFilter] = useState('all');
+  // State for tracking image load errors
+  const [imageErrors, setImageErrors] = useState({});
 
-  // Project data
+  // Project data with corrected image paths
   const projects = [
     {
       id: 1,
-      title: "Personal Portfolio",
-      description: "A responsive portfolio website built with React, Next.js and Tailwind CSS featuring dark mode and animations.",
-      image: "/images/portfolio.jpg", // Replace with your image path
-      technologies: ["React", "Next.js", "Tailwind CSS"],
-      category: "frontend",
-      github: "https://github.com/username/portfolio",
-      live: "https://portfolio.example.com",
+      title: "UrbanThreadz",
+      description: "Full-stack e-commerce application with user authentication, product catalog and many more comming.",
+      image: "/images/urbanthreadz.png", 
+      // image: "/images/urbanthreadz.png", // Option 3: If moved to public/images
+      technologies: ["mongoDB", "React", "Next.js", "next-auth", "more.."],
+      category: "fullstack",
+      github: "https://github.com/farhandotme/UrbanThreadz",
+      live: "https://urban-threadz.vercel.app/",
       featured: true
     },
     {
       id: 2,
-      title: "E-commerce Platform",
-      description: "Full-stack e-commerce application with user authentication, product catalog, and payment processing.",
-      image: "/images/ecommerce.jpg", // Replace with your image path
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      title: "Sync Talk {A Chat Application}",
+      description: "Full-stack chat application with real-time messaging, user authentication, and more.",
+      image: "/images/syncTalk.png",
+      technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
       category: "fullstack",
-      github: "https://github.com/username/ecommerce",
-      live: "https://ecommerce.example.com",
+      github: "https://github.com/farhandotme/chatApplication",
       featured: true
     },
     {
       id: 3,
-      title: "Task Management API",
-      description: "RESTful API for task management with user authentication and authorization.",
-      image: "/images/task-api.jpg", // Replace with your image path
-      technologies: ["Node.js", "Express", "MongoDB", "JWT"],
-      category: "backend",
-      github: "https://github.com/username/task-api",
+      title: "Movies Scanner",
+      description: "A web application for searching and discovering movies.",
+      image: "/images/moviesScanner.png",
+      technologies: ["React js"],
+      category: "frontend",
+      github: "https://github.com/farhandotme/moviesScanner",
+      live: "https://moviescanner.netlify.app",
       featured: false
     },
-    {
-      id: 4,
-      title: "Weather Dashboard",
-      description: "Interactive weather dashboard that displays current weather and forecast data from a public API.",
-      image: "/images/weather.jpg", // Replace with your image path
-      technologies: ["React", "Redux", "OpenWeather API"],
-      category: "frontend",
-      github: "https://github.com/username/weather-app",
-      live: "https://weather.example.com",
-      featured: false
-    }
+    
   ];
 
   // Filter projects based on selected category
@@ -65,6 +58,14 @@ const Projects = () => {
     : filter === 'featured'
       ? projects.filter(project => project.featured)
       : projects.filter(project => project.category === filter);
+
+  // Handle image load errors
+  const handleImageError = (projectId) => {
+    setImageErrors(prev => ({
+      ...prev,
+      [projectId]: true
+    }));
+  };
 
   // Animation variants
   const containerVariants = {
@@ -94,6 +95,7 @@ const Projects = () => {
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6 }
   };
+
   const mouseLightRef = useRef(null);
 
   useEffect(() => {
@@ -174,11 +176,20 @@ const Projects = () => {
             >
               {/* Project Image */}
               <div className="h-48 overflow-hidden relative group">
-                <div className="absolute inset-0 bg-gray-900 opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
-                <div className="w-full h-full bg-gray-400 flex items-center justify-center">
-                  {/* Placeholder - replace with your actual image */}
-                  <FaCode className="text-4xl text-white opacity-30" />
-                </div>
+                <div className="absolute inset-0 bg-gray-900 opacity-30 group-hover:opacity-50 transition-opacity duration-300 z-10" />
+                {!imageErrors[project.id] ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    onError={() => handleImageError(project.id)}
+                    onLoad={() => console.log(`Image loaded successfully: ${project.title}`)}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center">
+                    <FaCode className="text-4xl text-white opacity-60" />
+                  </div>
+                )}
               </div>
 
               {/* Project Content */}
@@ -265,7 +276,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Interested in working together?
+            Let me contribute to your team.
           </motion.h3>
           <motion.p 
             className={`mb-6 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}
@@ -282,7 +293,7 @@ const Projects = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Get In Touch
+            Contact Me
           </motion.a>
         </motion.div>
       </div>

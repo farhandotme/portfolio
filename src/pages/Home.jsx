@@ -20,7 +20,6 @@ const Home = () => {
       }
     };
 
-
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [isDark]);
@@ -131,7 +130,7 @@ const Home = () => {
             >
               <h3 className="text-lg sm:text-xl font-mono text-[#64ffda] mb-4">Technical Skills</h3>
               <div className="flex flex-wrap gap-2 sm:gap-3 justify-center md:justify-start">
-                {['JavaScript', 'TypeScript', 'React', 'Node.js', 'Express.js', 'MongoDB', 'MySQL', 'Python', 'C++', 'Java', 'Ejs']
+                {['JavaScript', 'TypeScript', 'React', 'Node.js', 'Express.js', 'MongoDB', 'MySQL', 'Python', 'C++', 'Java', 'Ejs', "Docker", "Git"]
                   .map((skill, index) => (
                     <span key={index}
                       className="px-3 sm:px-4 py-1.5 sm:py-2 bg-primary-light rounded-full text-xs sm:text-sm
