@@ -95,7 +95,7 @@ const Home = () => {
               Farhan Hussain.
             </h1>
             <h2 className="text-3xl sm:text-7xl font-bold text-text-secondary mb-6 sm:mb-8">
-              Full Stack Developer and devops dev
+              Full Stack Developer
             </h2>
             <p className="text-text-secondary max-w-xl mx-auto md:mx-0 mb-8 sm:mb-12 text-base sm:text-lg">
               I'm a motivated and self-taught developer currently pursuing BCA.
