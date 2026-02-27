@@ -1,25 +1,34 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
-import { FaGraduationCap, FaLaptopCode, FaUserTie } from 'react-icons/fa';
-import { useTheme } from '../context/ThemeContext';
+import { motion } from "framer-motion";
+import { FaGraduationCap, FaLaptopCode, FaUserTie } from "react-icons/fa";
+import { useTheme } from "../context/ThemeContext";
 
 const About = () => {
   const { theme } = useTheme();
-  const isDark = theme === 'dark';
+  const isDark = theme === "dark";
 
   const themeColor = "#64ffda";
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
+    transition: { duration: 0.6 },
   };
 
   const skills = [
-    { category: "Frontend", items: ["React", "JavaScript", "Tailwind CSS", "Ejs"] },
-    { category: "Backend", items: ["Node.js", "Express", "MongoDB", "MySQL", "REST APIs"] },
-    { category: "Tools & Others", items: ["Git", "VS Code", "Postman", "Linux", "JWT"] }
+    {
+      category: "Frontend",
+      items: ["React", "JavaScript", "Tailwind CSS", "Ejs"],
+    },
+    {
+      category: "Backend",
+      items: ["Node.js", "Express", "MongoDB", "MySQL", "REST APIs"],
+    },
+    {
+      category: "Tools & Others",
+      items: ["Git", "VS Code", "Postman", "Linux", "JWT", "Docker", "AWS", "Jenkins"],
+    },
   ];
   const mouseLightRef = useRef(null);
 
@@ -33,12 +42,14 @@ const About = () => {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isDark]);
 
   return (
-    <div className={`min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'} px-4 pt-24 pb-12`}>
+    <div
+      className={`min-h-screen ${isDark ? "bg-gray-900" : "bg-gray-50"} px-4 pt-24 pb-12`}
+    >
       {isDark && (
         <div
           ref={mouseLightRef}
@@ -53,7 +64,9 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className={`text-4xl sm:text-5xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-4`}>
+          <h1
+            className={`text-4xl sm:text-5xl font-bold ${isDark ? "text-white" : "text-gray-800"} mb-4`}
+          >
             About Me
           </h1>
         </motion.div>
@@ -65,16 +78,32 @@ const About = () => {
             {...fadeInUp}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className={`rounded-lg ${isDark ? 'bg-gray-800' : 'bg-white'} p-6 shadow-lg`}>
+            <div
+              className={`rounded-lg ${isDark ? "bg-gray-800" : "bg-white"} p-6 shadow-lg`}
+            >
               <div className="text-4xl mb-4" style={{ color: themeColor }}>
                 <FaGraduationCap />
               </div>
-              <h2 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-4`}>Education</h2>
+              <h2
+                className={`text-xl font-bold ${isDark ? "text-white" : "text-gray-800"} mb-4`}
+              >
+                Education
+              </h2>
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-medium" style={{ color: themeColor }}>BCA</h3>
-                  <p className={`${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Dispur College</p>
-                  <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>2021 - Present</p>
+                  <h3 className="font-medium" style={{ color: themeColor }}>
+                    BCA
+                  </h3>
+                  <p
+                    className={`${isDark ? "text-gray-300" : "text-gray-700"}`}
+                  >
+                    Dispur College
+                  </p>
+                  <p
+                    className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}
+                  >
+                    2021 - Present
+                  </p>
                 </div>
               </div>
             </div>
@@ -86,19 +115,42 @@ const About = () => {
             {...fadeInUp}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className={`rounded-lg ${isDark ? 'bg-gray-800' : 'bg-white'} p-6 shadow-lg`}>
+            <div
+              className={`rounded-lg ${isDark ? "bg-gray-800" : "bg-white"} p-6 shadow-lg`}
+            >
               <div className="text-4xl mb-4" style={{ color: themeColor }}>
                 <FaLaptopCode />
               </div>
-              <h2 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-4`}>Experience</h2>
+              <h2
+                className={`text-xl font-bold ${isDark ? "text-white" : "text-gray-800"} mb-4`}
+              >
+                Experience
+              </h2>
               <div className="space-y-6">
                 <div>
-                  <h3 className="font-medium" style={{ color: themeColor }}>Full Stack Developer</h3>
-                  <p className={`${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Freelance</p>
-                  <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>2023 - Present</p>
-                  <ul className={`mt-2 space-y-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                    <li>• Building full-stack web applications using React and Node.js</li>
-                    <li>• Implementing responsive designs and user authentication</li>
+                  <h3 className="font-medium" style={{ color: themeColor }}>
+                    Full Stack Developer
+                  </h3>
+                  <p
+                    className={`${isDark ? "text-gray-300" : "text-gray-700"}`}
+                  >
+                    Freelance
+                  </p>
+                  <p
+                    className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}
+                  >
+                    2023 - Present
+                  </p>
+                  <ul
+                    className={`mt-2 space-y-2 ${isDark ? "text-gray-300" : "text-gray-700"}`}
+                  >
+                    <li>
+                      • Building full-stack web applications using React and
+                      Node.js
+                    </li>
+                    <li>
+                      • Implementing responsive designs and user authentication
+                    </li>
                     <li>• Working with databases like MongoDB</li>
                   </ul>
                 </div>
@@ -114,11 +166,17 @@ const About = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <div className={`rounded-lg ${isDark ? 'bg-gray-800' : 'bg-white'} p-6 shadow-lg`}>
+          <div
+            className={`rounded-lg ${isDark ? "bg-gray-800" : "bg-white"} p-6 shadow-lg`}
+          >
             <div className="text-4xl mb-4" style={{ color: themeColor }}>
               <FaUserTie />
             </div>
-            <h2 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-6`}>Technical Skills</h2>
+            <h2
+              className={`text-xl font-bold ${isDark ? "text-white" : "text-gray-800"} mb-6`}
+            >
+              Technical Skills
+            </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {skills.map((skillGroup, index) => (
                 <motion.div
@@ -127,7 +185,10 @@ const About = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.2 * index }}
                 >
-                  <h3 className="font-medium mb-3" style={{ color: themeColor }}>
+                  <h3
+                    className="font-medium mb-3"
+                    style={{ color: themeColor }}
+                  >
                     {skillGroup.category}
                   </h3>
                   <div className="flex flex-wrap gap-2">
@@ -135,9 +196,10 @@ const About = () => {
                       <span
                         key={idx}
                         className={`px-3 py-1 text-sm rounded-full transition-all duration-300
-                          ${isDark
-                            ? 'bg-gray-700/50 text-gray-300 hover:bg-secondary/20 hover:text-secondary'
-                            : 'bg-gray-100/50 text-gray-800 hover:bg-secondary/10 hover:text-secondary'
+                          ${
+                            isDark
+                              ? "bg-gray-700/50 text-gray-300 hover:bg-secondary/20 hover:text-secondary"
+                              : "bg-gray-100/50 text-gray-800 hover:bg-secondary/10 hover:text-secondary"
                           } hover:shadow-md hover:shadow-secondary/10 border border-transparent hover:border-secondary/30`}
                       >
                         {skill}
@@ -157,7 +219,9 @@ const About = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <p className={`${isDark ? 'text-gray-300' : 'text-gray-700'} max-w-2xl mx-auto`}>
+          <p
+            className={`${isDark ? "text-gray-300" : "text-gray-700"} max-w-2xl mx-auto`}
+          >
             I'm passionate about creating robust and user-friendly applications.
             Always eager to learn new technologies and solve complex problems.
           </p>
